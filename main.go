@@ -444,7 +444,7 @@ func main() {
 		server := &http.Server{Addr: ":8081", Handler: mux}
 		go func() {
 			<-ctx.Done()
-			server.Shutdown(context.Background())
+			_ = server.Shutdown(context.Background())
 		}()
 		if err := server.ListenAndServe(); err != http.ErrServerClosed {
 			log.Printf("Health server error: %v", err)

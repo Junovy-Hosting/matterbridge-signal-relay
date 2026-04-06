@@ -38,7 +38,7 @@ repos:
   # Go linting and formatting
   # =============================================================================
   - repo: https://github.com/golangci/golangci-lint
-    rev: v2.1.6
+    rev: v1.64.8
     hooks:
       - id: golangci-lint
         args: ["--timeout=5m"]
