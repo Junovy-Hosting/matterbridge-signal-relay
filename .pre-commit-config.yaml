@@ -1,0 +1,89 @@
+# Pre-commit hooks for matterbridge-signal-relay
+# Install: pre-commit install
+# Run manually: pre-commit run --all-files
+# Update hooks: pre-commit autoupdate
+
+default_language_version:
+  python: python3
+
+repos:
+  # =============================================================================
+  # General hooks
+  # =============================================================================
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-added-large-files
+        args: ["--maxkb=500"]
+
+      - id: check-case-conflict
+
+      - id: check-merge-conflict
+
+      - id: end-of-file-fixer
+
+      - id: trailing-whitespace
+
+      - id: check-yaml
+
+      - id: check-json
+
+      - id: check-executables-have-shebangs
+
+      - id: check-shebang-scripts-are-executable
+
+      - id: detect-private-key
+
+  # =============================================================================
+  # Go linting and formatting
+  # =============================================================================
+  - repo: https://github.com/golangci/golangci-lint
+    rev: v2.1.6
+    hooks:
+      - id: golangci-lint
+        args: ["--timeout=5m"]
+
+  - repo: https://github.com/tekwizely/pre-commit-golang
+    rev: v1.0.0-rc.1
+    hooks:
+      # Ensure go.mod is tidy
+      - id: go-mod-tidy
+
+      # Run tests
+      - id: go-test-mod
+        args: ["-v", "-race", "-count=1"]
+
+      # Check formatting
+      - id: go-fmt
+
+      # Run go vet
+      - id: go-vet-mod
+
+  # =============================================================================
+  # Dockerfile linting
+  # =============================================================================
+  - repo: https://github.com/hadolint/hadolint
+    rev: v2.13.1-beta
+    hooks:
+      - id: hadolint-docker
+        args:
+          - --ignore=DL3008  # Pin versions in apt-get
+          - --ignore=DL3059  # Multiple consecutive RUN
+
+  # =============================================================================
+  # Markdown linting
+  # =============================================================================
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.44.0
+    hooks:
+      - id: markdownlint
+        args: ["--fix"]
+
+  # =============================================================================
+  # Secret detection
+  # =============================================================================
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.5.0
+    hooks:
+      - id: detect-secrets
+        args: ["--baseline", ".secrets.baseline"]

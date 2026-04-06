@@ -8,7 +8,7 @@ Matterbridge has no built-in Signal bridge. The original [signald](https://gitla
 
 ## Architecture
 
-```
+```text
 Signal servers
       |
 signal-cli-rest-api (:8080)    <-- WebSocket + REST API
@@ -111,7 +111,7 @@ All configuration is via environment variables:
 
 Maps matterbridge gateway names to Signal group IDs:
 
-```
+```bash
 GATEWAY_MAP="gateway-name=group.ABC123...,other-gateway=group.DEF456..."
 ```
 

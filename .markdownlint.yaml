@@ -1,0 +1,15 @@
+# markdownlint configuration
+default: true
+
+# Allow long lines (code blocks, tables, URLs)
+MD013: false
+
+# Allow HTML in markdown (badges, details tags)
+MD033: false
+
+# Allow duplicate headings in different sections
+MD024:
+  siblings_only: true
+
+# Allow trailing punctuation in headings
+MD026: false

@@ -31,8 +31,8 @@ import (
 type Config struct {
 	SignalNumber    string            // e.g. "+15551234567"
 	SignalAPI       string            // e.g. "http://signal-cli-rest-api:8080"
-	MatterbridgeAPI string           // e.g. "http://localhost:4242"
-	APIAccount     string            // matterbridge API account name, e.g. "api.signal"
+	MatterbridgeAPI string            // e.g. "http://localhost:4242"
+	APIAccount      string            // matterbridge API account name, e.g. "api.signal"
 	GatewayMap      map[string]string // gateway name → signal group ID
 	SignalGroupMap  map[string]string // signal group ID → gateway name (reverse)
 }
@@ -128,7 +128,7 @@ func loadConfig() Config {
 		SignalNumber:    signalNumber,
 		SignalAPI:       signalAPI,
 		MatterbridgeAPI: matterbridgeAPI,
-		APIAccount:     apiAccount,
+		APIAccount:      apiAccount,
 		GatewayMap:      gatewayMap,
 		SignalGroupMap:  signalGroupMap,
 	}
